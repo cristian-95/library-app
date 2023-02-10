@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;900&display=swap');
+
+:root{
+    --card-bg-color: rgba(255, 255, 255, 0.76);
+    --box-shadow: var(--box-shadow)
+}
+
+body {
+    background-image: url('./img/bg.jpg');
+    color:black;    
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+
+header {    
+    padding: 2%;
+    background-color: antiquewhite;
+    box-shadow: var(--box-shadow);
+}
+
+h1 {
+    font-weight: 400;
+}
+
+.head-actions > button{
+    background-color: antiquewhite;
+    border:none;
+    color:black;
+    margin: 5px;
+    font-size: 20px;  
+    padding: 15px;
+    border-radius: 10px;
+}
+.head-actions > button:active{
+    background-color: black;
+    color: white;
+}
+
+/* BOOK INSERTION FORM */
+
+dialog{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: none;
+    padding: 2%;
+    box-shadow: var(--box-shadow);
+    max-width: 500px;
+    font-size: 18px;
+}
+    
+dialog > form{  
+    color:black;
+    padding: 5%;
+}
+dialog > label{
+    font-weight: bold;
+}
+
+dialog > form > input {
+    background-color: antiquewhite;
+    font-size: 20px;
+    width: 100%;
+    color:black;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+form > h2 {
+    text-align: center;
+    font-weight: 400;
+}
+
+.form-buttons {
+    display: flex;
+    margin-top: 25px;
+    margin-left: 10%;
+    gap: 50%;
+}
+.form-buttons > button{
+    background-color: lightgray;
+    border:none;
+    color:black;
+    font-weight: 300;
+    
+    font-size: 20px;  
+    padding: 15px;
+    border-radius: 10px;
+}
+.form-buttons > button:active{
+    background-color: black;
+    color: white;
+}
+
+/* BOOK CONTAINER */
+
+#container{
+    margin: 2%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1%;    
+}
+
+/*BOOK CARDS */
+
+.book-card{
+    background-color: var(--card-bg-color);
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+    padding: 0;
+    display: flex;
+    flex-direction: column;    
+}
+.book-card > h2{
+    text-align: center;
+    text-transform: capitalize;
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;    
+}
+.book-card > img{
+    margin: none;
+    
+    align-self: center;
+    max-width: 80%;
+    border-radius: 50%;
+}
+.book-card > p {
+    text-transform: capitalize;
+    padding-top: 1%;
+    padding-left: 5%;
+    margin: 0;
+    word-wrap: break-word;
+}
+.book-card > .checkbox-container {
+    padding-left: 5%;
+}
+/*
+.book-card > blockquote {
+    color: lightgray;
+    
+}
+*/
+.book-card > button {
+    font-size: 20px;
+    font-weight: 300;
+    color:black;
+    border: none;    
+    width: min-content;
+    padding: 15px;
+    border-radius: 5px;
+    margin-left: 70%;
+    margin-bottom: 2%;
+}
+.book-card > button:active{
+    background-color: black;
+    color: white;
+}
+
+@media only screen and (max-width: 470px){
+    .book-card, #container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        gap: 25px;
+    }
+}
