@@ -8,7 +8,7 @@
 
 ## TO-DO:
 
-- [ ] Validar formulario
+- [x] Validar formulario
 - [ ] Troca de capa de livro
 - [ ] Adicionar outras caracteristicas do livro pra uso opcional
 - [ ] persistencia de dados(armazenamento local, ou nuvem)

@@ -1,11 +1,10 @@
-/* constants and classes */
 const modal = document.querySelector('dialog')
 const openFormBtn = document.querySelector('#open-form-btn')
 const closeFormBtn = document.querySelector('#close-form-btn')
-const submitBtn = document.querySelector('#submit-form-btn')
-const bookData = document.querySelector('#book-data')
+const form = document.querySelector('#add-book-form')
 const container = document.querySelector('#container')
 const clear = document.querySelector('#clear-library')
+const errorMessages = document.querySelector('#error-message')
 const bookIcon = './img/book-icon.png'
 let library = []
 
@@ -21,8 +20,8 @@ class Book {
 
 openFormBtn.addEventListener('click', openModal)
 closeFormBtn.addEventListener('click', closeModal)
-submitBtn.addEventListener('click', readBookInfo)
 clear.addEventListener('click', clearLibrary)
+form.addEventListener('submit', readBookInfo)
 
 function openModal (e) {
   e.preventDefault()
@@ -31,17 +30,42 @@ function openModal (e) {
 
 function closeModal (e) {
   e.preventDefault()
+  errorMessages.innerHTML = ''
+  form.reset()
   modal.close()
 }
 
+function validateInput (e, data) {
+  let messages = []  
+  if (data.title.trim() === ''|| data.title == null) {
+    messages.push('Title is required. ')
+  }
+  if (data.author.trim() === ''|| data.author == null){
+    messages.push('Author is required.')
+  }
+  if (messages.length > 0){
+    e.preventDefault()
+    messages.forEach( (err)=> {
+      errorMessages.innerHTML += err + ' '
+    })
+    return true
+  } else {
+    return false
+  }
+}
+
 function readBookInfo (event) {
-  event.preventDefault()
-  const formData = new FormData(bookData)
+  const formData = new FormData(this)
   const data = Object.fromEntries(formData)
+  errorMessages.innerHTML = ''  
+  if(validateInput(event, data)){
+    return
+  }
+
   const checkbox = document.querySelector('#form-checkbox')
   const newBook = new Book(data.title, data.author, data.pages, checkbox.checked)
   library.push(newBook)
-  bookData.reset()
+  form.reset()
   closeModal(event)
   renderBooks()
 }

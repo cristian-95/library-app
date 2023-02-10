@@ -96,6 +96,11 @@ form > h2 {
     color: white;
 }
 
+#error-message {
+    font-size: 16px;
+    color: darkred;    
+}
+
 /* BOOK CONTAINER */
 
 #container{
