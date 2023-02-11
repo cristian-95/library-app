@@ -126,12 +126,10 @@ form > h2 {
     word-wrap: break-word;
     font-family: 'Courier New', Courier, monospace;    
 }
-.book-card > img{
-    margin: none;
-    
+.book-card > img{   
     align-self: center;
-    max-width: 80%;
-    border-radius: 50%;
+    max-width: 75%;
+    border-radius: 15px;
 }
 .book-card > p {
     text-transform: capitalize;

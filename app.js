@@ -5,16 +5,17 @@ const form = document.querySelector('#add-book-form')
 const container = document.querySelector('#container')
 const clear = document.querySelector('#clear-library')
 const errorMessages = document.querySelector('#error-message')
-const bookIcon = './img/book-icon.png'
+const BookIcon = './img/book-icon.png'
 let library = []
 
 class Book {
-  constructor (title, author, pages, read) {
+  constructor (title, author, pages, read, cover) {
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
     this.id = Math.random().toString(16).slice(2)
+    this.cover = cover
   }
 }
 
@@ -43,6 +44,9 @@ function validateInput (e, data) {
   if (data.author.trim() === ''|| data.author == null){
     messages.push('Author is required.')
   }
+  if(data.img.trim() === ''){
+    data.img = BookIcon
+  }
   if (messages.length > 0){
     e.preventDefault()
     messages.forEach( (err)=> {
@@ -63,7 +67,7 @@ function readBookInfo (event) {
   }
 
   const checkbox = document.querySelector('#form-checkbox')
-  const newBook = new Book(data.title, data.author, data.pages, checkbox.checked)
+  const newBook = new Book(data.title, data.author, data.pages, checkbox.checked, data.img)
   library.push(newBook)
   form.reset()
   closeModal(event)
@@ -95,7 +99,7 @@ function generateCard (book) {
   bookCard.classList.add('book-card')
   bookCard.id = book.id
   h2.innerHTML = book.title
-  img.src = bookIcon
+  img.src = book.cover
   img.alt = 'book icon placeholder'
   author.innerHTML = book.author
   pages.innerHTML = book.pages + ' Pages'

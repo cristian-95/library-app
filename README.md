@@ -9,7 +9,7 @@
 ## TO-DO:
 
 - [x] Validar formulario
-- [ ] Troca de capa de livro
+- [ ] Troca de capa de livro (em progresso)
 - [ ] Adicionar outras caracteristicas do livro pra uso opcional
 - [ ] persistencia de dados(armazenamento local, ou nuvem)
 - [ ] revisão e otimização de app.js
